@@ -1,5 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Class instructions (unclear if we need / so included both version with and without)
+.idea
+/.idea
+node_modules
+
+# Pre-populated
 # dependencies
 /node_modules
 /.pnp
