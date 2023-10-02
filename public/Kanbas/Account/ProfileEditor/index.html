@@ -1,90 +1,169 @@
+<!--Links -->
+<html>
+<head>
+    <link href="../../../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/bootstrap/css/bootstrap-grid.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"/>
+    <link href="../../index.css" rel="stylesheet"/>
+</head>
 <body>
-<table border="0.2" width = "100%">
-    <tr>
-        <td valign = "top">
-            <ul>
-                <li><a href="../Profile/index.html">Account</a></li>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="../../Courses/Home/index.html">Courses</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">History</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Commons</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-        </td>
-        <td valign = "top">
-            <ul>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="../Profile/index.html">Profile</a></li>
-                <li><a href="#">Files</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">ePortfolio</a></li>
-                <li><a href="#">Shared Content</a></li>
-                <li><a href="#">The Hub</a></li>
-                <li><a href="#">Qwickly Course Tools</a></li>
-                <li><a href="#">Global Announcements</a></li>
-            </ul>
-        </td>
-        <td valign = "top">
-            Katie Davenport's Profile
-            <table width = "100%">
-                <h1>Katie Davenport</h1>
-                <label>Name*: </label>
-                <form>
-                    <input value="Katie Davenport"/>
-                </form>
-                <label for="pronouns">  Pronouns: </label>
-                <select id="pronouns">
-                    <option>None</option>
-                </select><br/><br/>
-                <label>Title: </label>
-                <form>
-                    <input />
-                </form>
-                <h2>Contact</h2>
-                No registered services, you can add some on the setting page.
-                <h2>Contact</h2>
-                No registered services, you can add some on the setting page.
-                <h2>Biography</h2>
-                <form>
-                    <label>Graduate Student in Computer Science, Software Engineer at MathWorks.</label><br/>
-                    <textarea cols="65" rows="2">Graduate Student in Computer Science, Software Engineer at MathWorks.</textarea>
-                </form>
-                <h2>Links</h2>
-                <ul>
-                    <li><a href="#">Github</a>  Links to an external site</li>
+<div class="row">
+    <div class = "col-md-2" style="width: 80px;">
+        <ul class="wd-kanbas-navigation">
+            <li class="wd-active">
+                <a href="index.html">
+                    <i class="fa fa-user fa-2x" style="color: grey"></i><br/>
+                    Account</a>
+            </li>
+            <li>
+                <a href="../../Dashboard/index.html">
+                    <i class="fa fa-gauge-high fa-2x" style="color: red"></i><br/>
+                    Dashboard</a>
+            </li>
+            <li>
+                <a href="../../Courses/Home/index.html">
+                    <i class="fa fa-book fa-2x" style="color: red"></i><br/>
+                    Courses</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-calendar-days fa-2x" style="color: red"></i><br/>
+                    Calendar</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-envelope-open-text fa-2x" style="color: red"></i><br/>
+                    Inbox</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-clock fa-2x" style="color: red"></i><br/>
+                    History</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-display fa-2x" style="color: red"></i><br/>
+                    Studio</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-circle-right fa-2x" style="color: red"></i><br/>
+                    Commons</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-circle-question fa-2x" style="color: red"></i><br/>
+                    Help</a>
+            </li>
+        </ul>
+    </div>
+    <div class = "col-md-10">
+        <div class = "row wd-general">
+            <div class="d-flex align-items-center wd-general">
+                <i class="fa fa-bars fa-2x me-2"></i>
+                <h4 class="mb-0">Jose Annunziato's Profile</h4>
+            </div>
+            <hr/>
+        </div>
+        <div class = "row">
+            <div class = "col-md-4" style="width: 200px;">
+                <ul class="wd-secondary-navigation">
+                    <li><a href="#">Notifications</a></li>
+                    <li class = "wd-active"><a href="index.html">Profile</a></li>
+                    <li><a href="#">Files</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">ePortfolio</a></li>
+                    <li><a href="#">Shared Content</a></li>
+                    <li><a href="#">The Hub</a></li>
+                    <li><a href="#">Qwickly Course Tools</a></li>
+                    <li><a href="#">Global Announcements</a></li>
                 </ul>
-                <table>
-                <tr>
-                    <td valign = "top">
-                        Title
-                    </td>
-                    <td valign = "top">
-                        URL
-                    </td>
-                </tr>
-                <tr>
-                    <td valign = "top">
+            </div>
+            <div class = "col-md-6 wd-general">
+                <div class="col-md-4 float-end">
+                    <button type="button" class="btn btn-secondary">
+                        <a href="../Profile/index.html" class="wd-profile-button">
+                            <i class="fa fa-pencil fa-1x"></i>
+                            Cancel Editing
+                        </a>
+                    </button>
+                </div>
+                <div>
+                    <i class="fa fa-circle-user fa-6x" style="color: darkgrey"></i>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:*</label>
+                    <input type="text" class="form-control" id="name" value="Jose Annunziato">
+                </div>
+                <div class ="mb-3 dropdown">
+                    <label for="pronoun" class="form-label">Pronouns:</label>
+                    <select class="form-select" id = "pronoun" aria-label="Default select example">
+                        <option selected>None</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" id="Title">
+                </div>
+
+                <h5>Contact</h5>
+                <div>
+                    No registered services, you can add some on the setting page.
+                </div><br/>
+
+                <h5>Biography</h5>
+                <div class="input-group">
+                    <textarea class="form-control">Faculty, Software Engineer, AI, Space, and renewables enthusiast</textarea>
+                </div><br/>
+
+                <h5>Links</h5>
+                <div class="row">
+                    <div class="col-md-4">
                         <form>
-                            <input value="Github"/>
-                            &rarr;
+                            <div>
+                                <label for="title2" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title2" value="YouTube">
+                            </div>
                         </form>
-                    </td>
-                    <td valign = "top">
+                    </div>
+                    <div class="col-md-4">
                         <form>
-                            <a href="#">Remove</a>
+                            <div>
+                                <label for="url" class="form-label">URL</label>
+                                <input type="text" class="form-control" id="url" value="https://www.youtube.com/@WebDevTV">
+                            </div>
                         </form>
-                    </td>
-                </tr>
-                </table>
-                <button type="button"> Add another link</button></br>
-                <button type="button"> Cancel</button>
-                <button type="button"><a href="../Profile/index.html"> Save Profile</a></button></br>
-                <button type="button"> Edit Profile</button>
-                <button type="button"><a href="../Profile/index.html"> Cancel Editing</a></button>
-        </td>
-    </tr>
-</table>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn btn-outline-dark"> Add another link</button><br/><br/>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary">
+                        <a href="../Profile/index.html" class = "wd-profile-button">
+                            Cancel </a>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <a href="../Profile/index.html" class = "wd-profile-button">
+                            Save Profile</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

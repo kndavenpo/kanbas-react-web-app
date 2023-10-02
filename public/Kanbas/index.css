@@ -1,0 +1,170 @@
+/* General */
+body {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wd-general{
+  margin: 10px;
+  padding-bottom: 20px;
+}
+
+.no-wrap-breadcrumb {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*Settings*/
+.small-italic {
+  font-size: smaller;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.wd-small-text {
+  font-size: smaller;
+  margin-top: 5px;
+}
+
+
+/*Grades*/
+.centered-table tr {
+  vertical-align: middle;
+}
+
+/*Assignment Screen*/
+.oval-button {
+  border-radius: 50px; /* Set the border-radius to half of the height to make it appear oval */
+}
+
+.wd-bold-text{
+  font-weight: bold;
+}
+
+.wd-assignment-links{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.green-border {
+  border-left: 5px solid green; /* Adjust the width and color as needed */
+}
+
+
+/*Assignment Editor*/
+.input-group-height {
+  height: 100px; /* Adjust the height as needed */
+}
+
+.form-label {
+  margin-top: 20px; /* Adjust the value as needed for the desired spacing */
+}
+
+#add {
+  text-align: center;
+}
+
+/*Profile*/
+.wd-profile-button{
+  color: white;
+  text-decoration: none;
+}
+
+/*Course Home*/
+.wd-course-links{
+  color: red;
+  text-decoration: none;
+}
+
+.small-course-status-button{
+  width: 118px;
+  margin-bottom: 5px;
+}
+
+/*Dashboard*/
+.wd-dashboard-grid .col{
+  width: 270px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.wd-card-title {
+  font-size: 0.8em;
+  font-weight: bold;
+  font-weight: bold;
+  color: blue;
+}
+
+.wd-card-text {
+  font-size: 0.8em;
+}
+
+
+/*Main Navigation Sidebar*/
+.wd-kanbas-navigation {
+  background-color: black;
+  list-style: none;
+  padding: 0px;
+  width: 80px;
+  margin: 0px;
+}
+.wd-kanbas-navigation li {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  text-align: center;
+}
+.wd-kanbas-navigation li.wd-active {
+  background-color: white;
+}
+.wd-kanbas-navigation li.wd-active a {
+  color: red;
+}
+.wd-kanbas-navigation a {
+  color: white;
+  text-decoration: none;
+}
+.wd-kanbas-navigation a i {
+  color: red;
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+/*Course and Account Navigation Sidebar */
+.wd-secondary-navigation {
+  background-color: white;
+  list-style: none;
+  width: 200px;
+}
+.wd-secondary-navigation li {
+  font-size: 0.9em;
+  white-space: pre-wrap;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  padding: 10px;
+
+}
+.wd-secondary-navigation a {
+  color: red;
+  text-decoration: none;
+}
+.wd-secondary-navigation li.wd-active {
+  border-left: 2px solid black;
+}
+.wd-secondary-navigation li.wd-active a {
+  color: black;
+}
+
+/*Breadcrumb*/
+.breadcrumb{
+  font-size: 0.9em;
+  white-space: nowrap;
+  margin-left: 30px;
+  margin-top: 10px;
+}
