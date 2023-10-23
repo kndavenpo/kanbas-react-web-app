@@ -1,0 +1,192 @@
+/* General */
+body {
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wd-general{
+  margin: 10px;
+  padding: 10px;
+}
+
+/*Main Navigation Sidebar */
+
+/*This is so corners are not rounded*/
+.wd-kanbas-navigation .list-group-item:first-child,
+.wd-kanbas-navigation .list-group-item:last-child,
+.wd-kanbas-navigation .list-group-item.active:last-child,
+.wd-kanbas-navigation.list-group {
+  border-radius: 0px;
+}
+
+
+
+.wd-kanbas-navigation {
+  background-color: black;
+  color: red;
+  list-style: none;
+  padding: 0px;
+  width: 80px;
+  margin: 0px;
+}
+
+.wd-kanbas-navigation .list-group-item {
+  font-size: 0.8em;
+  color: red
+}
+
+.wd-kanbas-navigation .wd-icon {
+  font-size: 2em;
+}
+
+
+.wd-kanbas-navigation a {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  text-align: center;
+  background-color: black;
+  border: none;
+}
+
+.wd-kanbas-navigation a.active {
+  background-color: white;
+  color: red;
+}
+
+/*Home*/
+.home-margin{
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.full-width-hr {
+  width: 100%;
+}
+
+/*Course Navigation Sidebar */
+.cn-list-group-item {
+  color: red;
+  text-decoration: none;
+  text-align: left;
+  margin-bottom: 15px;
+  margin-left: 20px
+}
+
+.cn-list-group-item.active {
+  color: black;
+  border-left: 2px solid black;
+  padding-left: 8px;
+}
+
+.cn-wd-secondary-navigation {
+  width: 200px;
+}
+
+.cn-wd-secondary-navigation .list-group-item:last-child {
+  margin-bottom: 0;
+}
+
+.breadcrumb{
+  font-size: 0.9em;
+  white-space: nowrap;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+/*Course Home Page */
+
+.wd-icon {
+  margin-right: 10px;
+}
+/*Breadcrumb*/
+.course-navigation-header{
+  font-size: 0.8em;
+  font-style: italic;
+  white-space: nowrap;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.module-buttons button {
+  margin-right: 5px;
+}
+
+
+/*Modules */
+
+.module {
+  background-color: lightgray;
+  margin: 0px;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+.lesson {
+  margin: 0px;
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+/*Assignment Screen*/
+.spacer{
+  margin-left: 10px;
+}
+
+/*No rounded corners*/
+.assignments .list-group-item:first-child,
+.assignments .list-group-item:last-child,
+.assignments .list-group-item.active:last-child,
+.assignments.list-group {
+  border-radius: 0px;
+}
+
+
+/*Assignment Editor*/
+.input-group-height {
+  height: 100px;
+}
+
+.form-label {
+  margin-top: 20px;
+}
+
+#add {
+  text-align: center;
+}
+
+/* Dashboard */
+
+.wd-dashboard-grid .col-md-3 {
+  max-width: 270px;
+  min-width: 250px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.card-header {
+  height: 120px;
+}
+
+.card-title {
+  font-size: 0.9em;
+  font-weight: bold;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9em;
+  color: gray;
+  text-decoration: none;
+}
+
+
+
+
+
+
