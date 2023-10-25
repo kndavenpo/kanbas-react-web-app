@@ -10,4 +10,3 @@ function Labs() {
   );
 }
 export default Labs;
-

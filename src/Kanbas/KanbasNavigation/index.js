@@ -32,14 +32,13 @@ function KanbasNavigation() {
                 key={index}
                 to={`/Kanbas/${link}`}
                 className={`list-group-item ${pathname.includes(link) && "active"}`}>
-                {linkToIconMap[link]}<br/>
-                {link}
+              {linkToIconMap[link]}<br/>
+              {link}
             </Link>
         ))}
       </div>
   )
 }
 export default KanbasNavigation;
-
 
 

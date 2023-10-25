@@ -1,4 +1,4 @@
-import React from 'react';
+
 function FilterFunction(){
   let numberArray1 = [1, 2, 4, 5, 6];
 
@@ -6,13 +6,6 @@ function FilterFunction(){
   const evenNumbers = numberArray1.filter(a => a % 2 === 0);
   const oddNumbers = numberArray1.filter(a => a % 2 !== 0);
 
-  return(
-      <div>
-        <h3>Filter function</h3>
-        numbersGreaterThan2 = {numbersGreaterThan2}<br/>
-        evenNumbers = {evenNumbers}<br/>
-        oddNumbers = {oddNumbers}<br/>
-      </div>
-  )
 }
 export default FilterFunction
+

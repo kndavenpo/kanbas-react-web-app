@@ -1,15 +1,17 @@
-import React from 'react';
 function VariablesAndConstants() {
   var functionScoped = 2;
   let blockScoped = 5;
   const constant1 = functionScoped - blockScoped;
-  return(
+  return (
       <div>
-        <h2>Variables and Constants</h2>
-        functionScoped = { functionScoped }<br/>
-        blockScoped = { blockScoped }<br/>
-        constant1 = { constant1 }<br/>
+        <h4>Variables and Constants</h4>
+        functionScoped = {functionScoped}
+        <br />
+        blockScoped = {blockScoped}
+        <br />
+        constant1 = {constant1}
+        <br />
       </div>
   );
 }
-export default VariablesAndConstants
+export default VariablesAndConstants;
