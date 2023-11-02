@@ -13,6 +13,7 @@ body * {
   padding: 10px;
 }
 
+
 /*Main Navigation Sidebar */
 
 /*This is so corners are not rounded*/
@@ -127,6 +128,12 @@ body * {
   padding: 10px;
 }
 
+.module-header {
+  margin: 5px;
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+
 .lesson {
   margin: 0px;
   border: 1px solid lightgray;
@@ -136,6 +143,7 @@ body * {
 /*Assignment Screen*/
 .spacer{
   margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 /*No rounded corners*/
