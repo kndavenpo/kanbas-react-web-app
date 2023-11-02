@@ -4,12 +4,23 @@ import db from "../../Database";
 import { HiPlus } from "react-icons/hi";
 import { FaEllipsisV } from "react-icons/fa";
 import { AiFillCheckCircle } from "react-icons/ai";
+import AssignmentEditor from "./AssignmentEditor";
+
+import {useDispatch, useSelector} from "react-redux";
+import {addAssignment, deleteAssignment, setAssignment, updateAssignment} from "./assignmentsReducer";
+import {deleteModule, setModule} from "../Modules/modulesReducer";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignments = db.assignments;
+  // const assignments = db.assignments;
+  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+  const assignment = useSelector((state) => state.assignmentsReducer.assignment);
+  const dispatch = useDispatch();
+
+
   const courseAssignments = assignments.filter(
       (assignment) => assignment.course === courseId);
+
   return (
       <div className={'wd-general'}>
         <div className="row">
@@ -23,12 +34,42 @@ function Assignments() {
             </button>
             <button type="button" className="btn btn-danger">
               < HiPlus className = "wd-icon" style={{ color: "white" }} />
-              Assignment
+                Assignment
             </button>
           </div>
         </div><hr/>
-        <br/>
-        <div className="list-group assignments">
+        <div className="row">
+          <li className="list-group-item col-md-8">
+            <h6>Assignment Name</h6>
+            <input value={assignment.title}
+                   onChange={(e) =>
+                       dispatch(setAssignment({ ...assignment, title: e.target.value }))}
+                   className = "col-md-8 module-header"/>
+            <button type="button" className="btn btn-success float-end spacer" onClick={() => dispatch(addAssignment({ ...assignment, course: courseId }))}>
+              Add
+            </button>
+            <button type="button" className="btn btn-primary float-end spacer" onClick={() => dispatch(updateAssignment(assignment))}>
+              Update
+            </button>
+            <br/>
+            <textarea value={assignment.description} onChange={(e) =>
+                dispatch(setAssignment({ ...assignment, description: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+            <input value={assignment.points} onChange={(e) =>
+                dispatch(setAssignment({ ...assignment, points: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+            <input value={assignment.due} onChange={(e) =>
+                dispatch(setAssignment({ ...assignment, due: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+            <input value={assignment.available_from} onChange={(e) =>
+                dispatch(setAssignment({ ...assignment, available_from: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+            <input value={assignment.available_to} onChange={(e) =>
+                dispatch(setAssignment({ ...assignment, available_to: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+          </li>
+        </div><hr/><br/>
+        <div className=" row list-group assignments">
           <div className="list-group-item" style={{ background: "lightgray" }}>
             <strong>ASSIGNMENTS</strong>
             <div className="float-end spacer">
@@ -37,7 +78,7 @@ function Assignments() {
               <FaEllipsisV className="wd-icon" />
             </div>
           </div>
-          {courseAssignments.map((assignment) => (
+          {courseAssignments.map((assignment, index) => (
               <Link
                   key={assignment._id}
                   to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
@@ -46,10 +87,17 @@ function Assignments() {
                 <div className="float-end">
                   <AiFillCheckCircle className="wd-icon spacer" style={{ color: "green" }} />
                   <FaEllipsisV className="wd-icon" />
+                  <button type="button" className="btn btn-success float-end spacer"
+                          onClick={() => dispatch(setAssignment(assignment))}>
+                    Edit
+                  </button>
+                  <button type="button" className="btn btn-danger float-end spacer"
+                          onClick={() => dispatch(deleteAssignment(assignment))}>
+                    Delete
+                  </button>
                 </div>
-              </Link>
-          ))}
-        </div>
+        </Link>))}
+        </div><br/>
       </div>
   );
 }

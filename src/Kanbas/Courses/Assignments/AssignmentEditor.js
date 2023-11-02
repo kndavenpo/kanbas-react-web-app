@@ -25,7 +25,7 @@ function AssignmentEditor() {
           </div>
         </div><br />
         <hr style={{ width: "100%" }} />
-        <input value={assignment.title} className="form-control mb-2" />
+                <input value={assignment.title} className="form-control mb-2" />
         <Link to={`/Kanbas/Courses/${courseId}/Assignments`} className="btn btn-danger me-2">
           Cancel
         </Link>
@@ -34,7 +34,6 @@ function AssignmentEditor() {
         </button>
       </div>
   );
-
 }
 
 export default AssignmentEditor;

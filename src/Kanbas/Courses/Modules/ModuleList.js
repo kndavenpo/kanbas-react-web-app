@@ -1,16 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import db from "../../Database";
+import {useParams} from "react-router-dom";
 import "../../index.css"
-import { GoCheckCircle } from "react-icons/go";
-import { HiPlus } from "react-icons/hi";
-import {AiFillCheckCircle} from "react-icons/ai";
-import {FaEllipsisV} from "react-icons/fa";
-
+import {GoCheckCircle} from "react-icons/go";
+import {HiPlus} from "react-icons/hi";
+import {useDispatch, useSelector} from "react-redux";
+import {addModule, deleteModule, setModule, updateModule,} from "./modulesReducer";
 
 function ModuleList() {
-  const { courseId } = useParams();
-  const modules = db.modules;
+  // Constants
+  const {courseId } = useParams();
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
+
   return (
       <ul className="list-group">
         <div className="wd-general">
@@ -27,11 +29,27 @@ function ModuleList() {
               <li><a className="dropdown-item" href="#">Publish all items and modules</a></li>
               <li><a className="dropdown-item" href="#">UnPublish</a></li>
             </ul>
-            <button type="button" className="btn btn-danger">
-              < HiPlus className = "wd-icon" style={{ color: "white" }} />
-              Module</button>
+            {/*<button type="button" className="btn btn-danger">*/}
+            {/*  < HiPlus className = "wd-icon" style={{ color: "white" }} />*/}
+            {/*  Module</button>*/}
           </div><br/>
           <br/><hr/>
+          <li className="list-group-item col-md-8">
+            <input value={module.name}
+                   onChange={(e) =>
+                       dispatch(setModule({ ...module, name: e.target.value }))}
+                   className = "col-md-8 module-header"/>
+            <button type="button" className="btn btn-success float-end spacer" onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+              Add
+            </button>
+            <button type="button" className="btn btn-primary float-end spacer" onClick={() => dispatch(updateModule(module))}>
+              Update
+            </button>
+            <br/>
+            <textarea value={module.description} onChange={(e) =>
+                dispatch(setModule({ ...module, description: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+          </li>
         </div>
         {
           modules
@@ -39,6 +57,14 @@ function ModuleList() {
               .map((module, index) => (
                   <div key={index} className="list-group-item list-group-item-secondary button" style={{ background: "none", border: "none" }} >
                     <div className="module">
+                      <button type="button" className="btn btn-success float-end spacer"
+                          onClick={() => dispatch(setModule(module))}>
+                        Edit
+                      </button>
+                      <button type="button" className="btn btn-danger float-end spacer"
+                          onClick={() => dispatch(deleteModule(module._id))}>
+                        Delete
+                      </button>
                       <h4>{module.name}</h4>
                       {module.description}
                     </div>
@@ -55,3 +81,109 @@ function ModuleList() {
   );
 }
 export default ModuleList;
+
+
+
+// VERSION BEFORE ADDING REDUCER
+// function ModuleList() {
+//   const { courseId } = useParams();
+//   const [modules, setModules] = useState(db.modules);
+//   const [module, setModule] = useState({
+//     name: "New Module",
+//     description: "New Description",
+//     course: courseId,
+//   });
+//   const addModule = (module) => {
+//     setModules([
+//       { ...module, _id: new Date().getTime().toString() },
+//       ...modules,
+//     ]);
+//   };
+//   const deleteModule = (moduleId) => {
+//     setModules(modules.filter(
+//         (module) => module._id !== moduleId));
+//   };
+//
+//   const updateModule = () => {
+//     setModules(
+//         modules.map((m) => {
+//           if (m._id === module._id) {
+//             return module;
+//           } else {
+//             return m;
+//           }
+//         })
+//     );
+//   }
+//
+//   const modules = db.modules;
+//   return (
+//       <ul className="list-group">
+//         <div className="wd-general">
+//           <div className="float-end module-buttons dropdown">
+//             <button type="button" className="btn btn-secondary">Collapse All</button>
+//             <button type="button" className="btn btn-secondary">View Progress</button>
+//             <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+//                     aria-expanded="false">
+//               < GoCheckCircle className = "wd-icon" style={{ color: "white" }} />
+//               Publish All
+//             </button>
+//             <ul className="dropdown-menu">
+//               <li><a className="dropdown-item" href="#">Publish All</a></li>
+//               <li><a className="dropdown-item" href="#">Publish all items and modules</a></li>
+//               <li><a className="dropdown-item" href="#">UnPublish</a></li>
+//             </ul>
+//             <button type="button" className="btn btn-danger">
+//               < HiPlus className = "wd-icon" style={{ color: "white" }} />
+//               Module</button>
+//           </div><br/>
+//           <br/><hr/>
+//
+//
+//           <li className="list-group-item">
+//             <button onClick={() => { addModule(module) }}>
+//               Add
+//             </button>
+//             <button onClick={updateModule}>
+//               Update
+//             </button>
+//             <input value={module.name}
+//                    onChange={(e) =>
+//                        setModule({...module, name: e.target.value })
+//                    }/>
+//             <textarea value={module.description}
+//                       onChange={(e) =>
+//                           setModule({...module, description: e.target.value })
+//                       }/>
+//           </li>
+//         </div>
+//         {
+//           modules
+//               .filter((module) => module.course === courseId)
+//               .map((module, index) => (
+//                   <div key={index} className="list-group-item list-group-item-secondary button" style={{ background: "none", border: "none" }} >
+//                     <div className="module">
+//                       <button
+//                           onClick={(event) => { setModule(module); }}>
+//                         Edit
+//                       </button>
+//                       <button
+//                           onClick={() => deleteModule(module._id)}>
+//                         Delete
+//                       </button>
+//                       <h4>{module.name}</h4>
+//                       {module.description}
+//                     </div>
+//                     {module.lessons && module.lessons.map((lesson, index) => (
+//                         <div key={index} className="lesson">
+//                           <h5>{lesson.name}</h5>
+//                           {lesson.description}
+//                         </div>
+//                     ))}
+//                   </div>
+//               ))
+//         }
+//       </ul>
+//   );
+// }
+// export default ModuleList;
