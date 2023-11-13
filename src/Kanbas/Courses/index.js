@@ -9,17 +9,29 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import "../../index.css";
 import { HiMenu } from "react-icons/hi";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-
-function Courses() {                                                             // original version
-// function Courses({ courses }) {                                               // version with error
+function Courses({ courses }) {
   const { courseId } = useParams();
   const { pathname } = useLocation();
-  const [empty, kanbas, courses, id, screen] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);    // original version
-  // const course = courses.find((course) => course._id === courseId);            // version with error
+  const [empty, kanbas, courses_, id, screen] = pathname.split("/");
   const links = ["Home", "Modules", "Assignments", "Grades"];
   const currentPage = links.find((link) => link === screen);
+  const course = courses.find((course) => course._id === courseId);
+
+  // A5: 4.2.5 Retrieve a Course by their ID ++++++++++++++++++  NOT WORKING
+  // const [course, setCourse] = useState({});
+  // const findCourseById = async (courseId) => {
+  //   const response = await axios.get(
+  //       `${URL}/${courseId}`
+  //   );
+  //   setCourse(response.data);
+  // };
+  // useEffect(() => {
+  //   findCourseById(courseId);
+  // }, [courseId]);
+
   return (
       <div>
         <div className="d-flex align-items-center">
