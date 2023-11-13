@@ -1,12 +1,16 @@
 import db from "../Database";
 import { Link } from "react-router-dom";
 import { React, useState} from "react"
+import axios from "axios";
 import "../../index.css";
 import { FaEllipsisV } from "react-icons/fa";
 import { CiMemoPad } from "react-icons/ci";
+import {setModule, updateModule} from "../Courses/Modules/modulesReducer";
+import {useDispatch, useSelector} from "react-redux";
 
 function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }) {
   const cardColors = ['indianred','steelblue','seagreen', 'orange','forestgreen','darkblue']
+  const dispatch = useDispatch();
 
   return (
       <div className="wd-general">
@@ -15,29 +19,47 @@ function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, up
         <h4>Published Courses ({courses.length})</h4>
         <div className="row wd-dashboard-grid col-md-8">
           <li className="list-group-item">
+
+
             <input value={course.name} className="col-md-8 module-header"
                    onChange={(e) => setCourse( { ...course, name: e.target.value})}/>
-
             <button className="btn btn-success float-end spacer" onClick={addNewCourse} >
               Add
             </button>
-            <button className="btn btn-primary float-end spacer" onClick = {updateCourse}>
+
+            {/*<button className="btn btn-primary float-end spacer" onClick = {updateCourse}>*/}
+            {/*  Update*/}
+            {/*</button>*/}
+            {/*<input value={course.number} className="col-md-8 module-header"*/}
+            {/*       onChange={(e) => setCourse( { ...course, number: e.target.value})}/>*/}
+
+            <button type="button" className="btn btn-primary float-end spacer" onClick={() => dispatch(updateCourse(course))}>
               Update
             </button>
-            <input value={course.number} className="col-md-8 module-header"
-                   onChange={(e) => setCourse( { ...course, number: e.target.value})}/>
-            {/*<input value={course.startDate} className= "col-md-6 module-header form-control" type = "date"*/}
-            {/*       onChange={(e) => setCourse( { ...course, startDate: e.target.value})}/>*/}
-            {/*<input value={course.endDate} className= "col-md-6 module-header form-control" type = "date"*/}
-            {/*       onChange={(e) => setCourse( { ...course, endDate: e.target.value})}/>*/}
+            <br/>
+            <textarea value={course.name} onChange={(e) =>
+                dispatch(setCourse({ ...course, name: e.target.value }))}
+                      className = "col-md-8 module-header"/>
+
             <hr/>
+
+
+
             <div className="list-group">
               {courses.map((course) => (
                   <div key={course._id} className="list-group-item">
+
                     {course.name}
-                    <Link to={`/Kanbas/Courses/${course._id}`} className="btn btn-warning float-end spacer">
+                    {/*<Link to={`/Kanbas/Courses/${course._id}`} className="btn btn-warning float-end spacer">*/}
+                    {/*  Edit*/}
+                    {/*</Link>*/}
+                    <button type="button" className="btn btn-success float-end spacer"
+                            onClick={() => dispatch(setCourse(course))}>
                       Edit
-                    </Link>
+                    </button>
+
+
+
                     <button
                         className="btn btn-danger float-end spacer"
                         onClick={(event) => {
