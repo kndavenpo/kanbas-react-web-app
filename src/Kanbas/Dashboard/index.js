@@ -1,12 +1,10 @@
-import db from "../Database";
-import { Link } from "react-router-dom";
-import { React, useState} from "react"
-import axios from "axios";
+import {Link} from "react-router-dom";
+import {React} from "react"
 import "../../index.css";
-import { FaEllipsisV } from "react-icons/fa";
-import { CiMemoPad } from "react-icons/ci";
-import {setModule, updateModule} from "../Courses/Modules/modulesReducer";
-import {useDispatch, useSelector} from "react-redux";
+import {FaEllipsisV} from "react-icons/fa";
+import {CiMemoPad} from "react-icons/ci";
+import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
 
 function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }) {
   const cardColors = ['indianred','steelblue','seagreen', 'orange','forestgreen','darkblue']
@@ -20,46 +18,44 @@ function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, up
         <div className="row wd-dashboard-grid col-md-8">
           <li className="list-group-item">
 
+            {/*Course Number Input Field */}
+            <input value={course.number} className="col-md-8 module-header"
+                   onChange={(e) =>
+                       setCourse( { ...course, number: e.target.value})}/><br/>
 
-            <input value={course.name} className="col-md-8 module-header"
-                   onChange={(e) => setCourse( { ...course, name: e.target.value})}/>
             <button className="btn btn-success float-end spacer" onClick={addNewCourse} >
               Add
             </button>
 
-            {/*<button className="btn btn-primary float-end spacer" onClick = {updateCourse}>*/}
-            {/*  Update*/}
-            {/*</button>*/}
-            {/*<input value={course.number} className="col-md-8 module-header"*/}
-            {/*       onChange={(e) => setCourse( { ...course, number: e.target.value})}/>*/}
-
-            <button type="button" className="btn btn-primary float-end spacer" onClick={() => dispatch(updateCourse(course))}>
+            {/*Update Button ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/}
+            <button className="btn btn-primary float-end spacer" onClick = {updateCourse}>
               Update
             </button>
-            <br/>
-            <textarea value={course.name} onChange={(e) =>
-                dispatch(setCourse({ ...course, name: e.target.value }))}
-                      className = "col-md-8 module-header"/>
 
-            <hr/>
+            {/*Course Name Input Field */}
+            <textarea className = "col-md-8 module-header"
+                value={course.name}
+                onChange={(e) => setCourse({ ...course, name: e.target.value })}
+            /><hr/>
 
-
+            {/*<textarea value={course.name} onChange={(e) =>*/}
+            {/*    dispatch(setCourse({ ...course, name: e.target.value }))}*/}
+            {/*          className = "col-md-8 module-header"/>*/}
+            {/*<hr/>*/}
 
             <div className="list-group">
               {courses.map((course) => (
                   <div key={course._id} className="list-group-item">
 
                     {course.name}
-                    {/*<Link to={`/Kanbas/Courses/${course._id}`} className="btn btn-warning float-end spacer">*/}
-                    {/*  Edit*/}
-                    {/*</Link>*/}
+
+
+                    {/*EDIT BUTTON (Professor Code) ++++++++++++++++++++++++++++++++++++++++++++++++*/}
                     <button type="button" className="btn btn-success float-end spacer"
-                            onClick={() => dispatch(setCourse(course))}>
-                      Edit
-                    </button>
+                        onClick={() => setCourse(course)}>Edit</button>
 
 
-
+                    {/*Delete Button*/}
                     <button
                         className="btn btn-danger float-end spacer"
                         onClick={(event) => {
@@ -69,6 +65,7 @@ function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, up
                     >
                       Delete
                     </button>
+
                   </div>
               ))}
             </div>
@@ -98,25 +95,13 @@ function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, up
 }
 export default Dashboard;
 
-// OLD CODE
-// const [courses, setCourses] = useState(db.courses);
-// const [course, setCourse] = useState({
-//   name: "New Course", number: "New Number", startDate: "2023-09-10", endDate: "2023-12-15",
-// });
-// const addNewCourse = () => {
-//   setCourses([ ...courses, { ... course, _id: new Date().getTime() }]);
-//     };
-// const deleteCourse = (courseId) => {
-//   setCourses(courses.filter((course) => course._id !== courseId));
-// }
-// const updateCourse = () => {
-//   setCourses(
-//       courses.map((c) => {
-//         if (c._id === course._id) {
-//           return course;
-//         } else {
-//           return c;
-//         }
-//       })
-//   );
-// };
+
+{/*A4 Assignment*/}
+{/*<button type="button" className="btn btn-success float-end spacer"*/}
+{/*    onClick={(event) => {*/}
+{/*      event.preventDefault();*/}
+{/*      setCourse(course);*/}
+{/*    }}>*/}
+{/*  Edit*/}
+{/*</button>*/}
+
