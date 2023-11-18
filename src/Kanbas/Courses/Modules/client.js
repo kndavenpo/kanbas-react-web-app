@@ -24,16 +24,9 @@ export const deleteModule = async (moduleId) => {
   return response.data;
 };
 
-// A5: 4.3.4 Update module - version in GIT
+// A5: 4.3.4 Update module
 export const updateModule = async (moduleId, module) => {
   const response = await axios.put(`${MODULES_URL}/${moduleId}`, module);
   return response.data;
 };
-
-// A5: 4.3.4 Update module - version in Assignment
-// export const updateModule = async (module) => {
-//   const response = await axios.
-//   put(`${MODULES_URL}/${module._id}`, module);
-//   return response.data;
-// };
 

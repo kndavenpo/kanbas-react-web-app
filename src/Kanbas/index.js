@@ -8,7 +8,6 @@ import store from "./store";
 import {useEffect, useState} from "react";
 import {Provider} from "react-redux";
 
-
 function Kanbas() {
   // A5: 4.2.1 Retrieving Courses
   const [courses, setCourses] = useState([]);
@@ -60,8 +59,6 @@ function Kanbas() {
     );
     setCourse({ name: "" });
   };
-
-
 
   return (
       <div className="d-flex">
