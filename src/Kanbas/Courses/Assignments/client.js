@@ -1,7 +1,8 @@
 import axios from "axios";
-const COURSES_URL = "http://localhost:4000/api/courses";
+
 
 const API_BASE = process.env.REACT_APP_API_BASE;
+const COURSES_URL = `${API_BASE}/courses`;
 const ASSIGNMENTS_URL = `${API_BASE}/assignments`;
 
 // NOTE: Copy from Modules (modules > assignments)
