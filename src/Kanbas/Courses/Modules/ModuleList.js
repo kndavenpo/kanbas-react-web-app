@@ -62,6 +62,8 @@ function ModuleList() {
             </ul>
           </div><br/>
           <br/><hr/>
+
+          {/*Module details, add and update buttons */}
           <li className="list-group-item col-md-8">
             <input value={module.name}
                    onChange={(e) =>
@@ -72,7 +74,6 @@ function ModuleList() {
             <button type="button" className="btn btn-success float-end spacer" onClick={handleAddModule}>
               Add
             </button>
-
             {/*A5: 4.3.4 Update a module - NOTHING WAS CHANGED HERE LIKE OTHERS */}
             <button type="button" className="btn btn-primary float-end spacer" onClick={() => dispatch(updateModule(module))}>
               Update
@@ -83,12 +84,14 @@ function ModuleList() {
                       className = "col-md-8 module-header"/>
           </li>
         </div>
+        {/*Modules for course with edit and delete buttons*/}
         {
           modules
               .filter((module) => module.course === courseId)
               .map((module, index) => (
                   <div key={index} className="list-group-item list-group-item-secondary button" style={{ background: "none", border: "none" }} >
                     <div className="module">
+
                       <button type="button" className="btn btn-success float-end spacer"
                           onClick={() => dispatch(setModule(module))}>
                         Edit

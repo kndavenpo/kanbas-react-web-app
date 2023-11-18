@@ -3,6 +3,7 @@ import axios from "axios";
 
 function WorkingWithArrays() {
   const API = "http://localhost:4000/a5/todos";
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [todo, setTodo] = useState({
     id: 1,
@@ -55,22 +56,31 @@ function WorkingWithArrays() {
   };
 
   // 3.5.2 Deleting Data
+  // 3.5.4 Extra credit - Handling Errors
   const deleteTodo = async (todo) => {
-    const response = await axios.delete(`${API}/${todo.id}`);
-    setTodos(todos.filter((t) => t.id !== todo.id));
-  };
+    try {
+      const response = await axios.delete(`${API}/${todo.id}`);
+      setTodos(todos.filter((t) => t.id !== todo.id));
+    } catch (error) {
+    console.log(error);
+    setErrorMessage(error.response.data.message);
+  }
+};
 
   // 3.5.3 Updating Todo
+  // 3.5.4 Extra credit - Handling Errors
   const updateTodo = async () => {
-    const response = await axios.put(
-        `${API}/${todo.id}`, todo);
-    setTodos(todos.map((t) => (
-        t.id === todo.id ? todo : t)));
-    setTodo({});
+    try{
+      const response = await axios.put(
+          `${API}/${todo.id}`, todo);
+      setTodos(todos.map((t) => (
+          t.id === todo.id ? todo : t)));
+      setTodo({});
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.response.data.message);
+    }
   };
-
-
-
 
   return (
       <div>
@@ -79,7 +89,7 @@ function WorkingWithArrays() {
         <div>
           <h4>Retrieving Arrays</h4>
           <a href={API} className="btn btn-primary me-2">
-            Get All Todos
+            Get all Todos
           </a>
         </div><br/>
 
@@ -95,23 +105,36 @@ function WorkingWithArrays() {
              className="btn btn-primary me-2">
             Get Todo by ID
           </a>
+
         </div><br/>
 
         {/*3.4.5 Fetching Arrays*/}
         <div>
           <h4>Fetching Arrays with Axios</h4>
 
+          {/*3.4.8 - added these in as well */}
+          <input
+              value={todo.id}
+              onChange={(e) => setTodo({ ...todo, id: e.target.value })}
+          /><br/>
+          <input
+              value={todo.title}
+              onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+          /><br/><br/>
+
+
+
           {/*3.4.7 Create new array elements*/}
           <button onClick={createTodo}
                   className="btn btn-primary mb-2 w-100">
             Create Todo
-          </button><br/><br/>
+          </button><br/>
 
-          {/*3.4.9 Update array elements ++++++++++++++++++++++++++++++++++++++++++++++ NOT WORKING*/}
-          {/*<button onClick={updateTitle}*/}
-          {/*        className="btn btn-success mb-2 w-100">*/}
-          {/*  Update Title*/}
-          {/*</button>*/}
+          {/*3.4.9 Update array elements*/}
+          <button onClick={updateTitle}
+                  className="btn btn-success mb-2 w-100">
+            Update Title
+          </button>
 
           {/*3.5.1 Posting data in an HTTP Body*/}
           <textarea
@@ -136,12 +159,19 @@ function WorkingWithArrays() {
             Post Todo
           </button><br/>
 
-          {/*3.5.2 Updating ToDo*/}
+          {/*3.5.3 Updating ToDo*/}
           <button onClick={updateTodo}>
             Update Todo
           </button><br/><br/>
 
 
+
+          {/*3.5.4 Extra credit - Handling Errors - place above list of To Dos*/}
+          {errorMessage && (
+              <div className="alert alert-danger mb-2 mt-2">
+                {errorMessage}
+              </div>
+          )}
 
           <ul className="list-group">
             {todos.map((todo) => (
@@ -175,14 +205,10 @@ function WorkingWithArrays() {
                       className="btn btn-danger float-end ms-2">
                     Delete
                   </button>
-
-
                 </li>
             ))}
           </ul>
         </div><br/>
-
-
 
         {/*3.3.3 Filtering array items using a query string */}
         <div>
@@ -216,9 +242,10 @@ function WorkingWithArrays() {
              className="btn btn-primary me-2">
             Delete Todo with ID = {todo.id}
           </a>
-        </div><br/>
+        </div><br/><br/>
 
         {/*3.3.6 Updating an Item in an Array */}
+        <h3>Updating an Item in an Array</h3>
         <div>
           <input
               value={todo.title}
@@ -227,14 +254,40 @@ function WorkingWithArrays() {
               className="form-control mb-2"
               type="text"
           />
-          <h3>Updating an Item in an Array</h3>
           <a
               href={`${API}/${todo.id}/title/${todo.title}`}
               className="btn btn-primary me-2" >
             Update Title to {todo.title}
+          </a><br/><br/>
+
+          {/*3.3.7 Extra Credit */}
+          <input
+              value={todo.completed}
+              onChange={(e) => setTodo({
+                ...todo, completed: e.target.value })}
+              className="form-control mb-2"
+              type="text"
+          />
+          <a
+              href={`${API}/${todo.id}/completed/${todo.completed}`}
+              className="btn btn-primary me-2" >
+            Update Completed to {todo.completed}
+          </a><br/><br/>
+
+
+          <input
+              value={todo.description}
+              onChange={(e) => setTodo({
+                ...todo, description: e.target.value })}
+              className="form-control mb-2"
+              type="text"
+          />
+          <a
+              href={`${API}/${todo.id}/description/${todo.description}`}
+              className="btn btn-primary me-2" >
+            Update Description to {todo.description}
           </a>
         </div>
-
       </div>
   );
 }

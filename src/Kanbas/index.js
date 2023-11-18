@@ -4,7 +4,6 @@ import Courses from "./Courses";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
 import axios from "axios";
-import db from "./Database";
 import store from "./store";
 import {useEffect, useState} from "react";
 import {Provider} from "react-redux";
@@ -23,7 +22,7 @@ function Kanbas() {
   }, []);
 
   const [course, setCourse] = useState({
-    name: "New Course", number: "New Number", startDate: "2023-09-10", endDate: "2023-12-15",
+    name: "New Course Name", number: "New Course Number", startDate: "2023-09-10", endDate: "2023-12-15",
   });
 
   // A5: 4.2.2 Create New Course
@@ -44,17 +43,21 @@ function Kanbas() {
     setCourses(courses.filter((course) => course._id !== courseId));
   }
 
-  // A4: Courses
-  const updateCourse = () => {
+  // Updated with Professor on 11/14/2023
+  const updateCourse = async () => {
+    const response = await axios.put(
+        `${URL}/${course._id}`,
+        course
+    );
     setCourses(
         courses.map((c) => {
           if (c._id === course._id) {
             return course;
-          } else {
-            return c;
           }
+          return c;
         })
     );
+    setCourse({ name: "" });
   };
 
   return (
@@ -85,3 +88,18 @@ function Kanbas() {
   );
 }
 export default Kanbas;
+
+
+// Code from A4
+// A4: Courses
+// const updateCourse = () => {
+//   setCourses(
+//       courses.map((c) => {
+//         if (c._id === course._id) {
+//           return course;
+//         } else {
+//           return c;
+//         }
+//       })
+//   );
+// };
