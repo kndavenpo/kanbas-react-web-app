@@ -12,7 +12,6 @@ import {deleteModule, setModule} from "../Modules/modulesReducer";
 
 function Assignments() {
   const { courseId } = useParams();
-  // const assignments = db.assignments;
   const assignments = useSelector((state) => state.assignmentsReducer.assignments);
   const assignment = useSelector((state) => state.assignmentsReducer.assignment);
   const dispatch = useDispatch();

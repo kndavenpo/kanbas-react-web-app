@@ -9,7 +9,6 @@ import store from "./store";
 import {useEffect, useState} from "react";
 import {Provider} from "react-redux";
 
-
 function Kanbas() {
   // A5: 4.2.1 Retrieving Courses
   const [courses, setCourses] = useState([]);
@@ -36,15 +35,6 @@ function Kanbas() {
     ]);
     setCourse({ name: "" });
   };
-  // const addNewCourse = async () => {
-  // const addNewCourse = () => {
-  //   // const response = await axios.post(URL, course);
-  //   setCourses([
-  //       // ...response.data,
-  //       ...courses,
-  //     { ... course, _id: new Date().getTime().toString() }]);
-  // };
-
 
   // A5: 4.2.3 Delete Course
   const deleteCourse = async (courseId) => {
@@ -67,28 +57,8 @@ function Kanbas() {
     );
   };
 
-
-  // A5: 4.2.4 Update Course
-  // const updateCourse = async (course) => {
-  //   const response = await axios.put(
-  //       `${URL}/${course._id}`,
-  //       course
-  //   );
-  //   setCourses(
-  //       courses.map((c) => {
-  //         if (c._id === course._id) {
-  //           return response.data;
-  //         } else {
-  //           return c;
-  //         }
-  //       })
-  //   );
-  // };
-
-
   return (
       <div className="d-flex">
-        {/*ADD IN PROVIDER */}
         <Provider store={store}>
           <div className="d-flex">
             <KanbasNavigation />
