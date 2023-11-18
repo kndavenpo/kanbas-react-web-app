@@ -1,6 +1,5 @@
 import React from "react";
-import { useParams, Routes, Route, Navigate, useLocation, Link } from "react-router-dom";
-import db from "../Database";
+import {Navigate, Route, Routes, useLocation, useParams} from "react-router-dom";
 import CourseNavigation from "./CourseNavigation";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -8,9 +7,7 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import "../../index.css";
-import { HiMenu } from "react-icons/hi";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import {HiMenu} from "react-icons/hi";
 
 function Courses({ courses }) {
   const { courseId } = useParams();

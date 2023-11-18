@@ -88,18 +88,3 @@ function Kanbas() {
   );
 }
 export default Kanbas;
-
-
-// Code from A4
-// A4: Courses
-// const updateCourse = () => {
-//   setCourses(
-//       courses.map((c) => {
-//         if (c._id === course._id) {
-//           return course;
-//         } else {
-//           return c;
-//         }
-//       })
-//   );
-// };

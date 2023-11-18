@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import db from "../../Database";
-import { HiPlus } from "react-icons/hi";
-import { FaEllipsisV } from "react-icons/fa";
-import { AiFillCheckCircle } from "react-icons/ai";
-import AssignmentEditor from "./AssignmentEditor";
-
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {HiPlus} from "react-icons/hi";
+import {FaEllipsisV} from "react-icons/fa";
+import {AiFillCheckCircle} from "react-icons/ai";
 import {useDispatch, useSelector} from "react-redux";
-import {addAssignment, deleteAssignment, setAssignment, updateAssignment, setAssignments} from "./assignmentsReducer";
-import {findAssignmentsForCourse, createAssignment} from "./client";
+import {addAssignment, deleteAssignment, setAssignment, setAssignments, updateAssignment} from "./assignmentsReducer";
 import * as client from "./client";
-import {setModule} from "../Modules/modulesReducer";
+import {createAssignment, findAssignmentsForCourse} from "./client";
 
 
 function Assignments() {
   const { courseId } = useParams();
   const assignments = useSelector((state) => state.assignmentsReducer.assignments);
-  // const assignments = db.assignments;
   const assignment = useSelector((state) => state.assignmentsReducer.assignment);
   const dispatch = useDispatch();
   const courseAssignments = assignments.filter(

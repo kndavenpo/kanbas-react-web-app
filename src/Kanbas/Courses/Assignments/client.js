@@ -1,9 +1,10 @@
 import axios from "axios";
 const COURSES_URL = "http://localhost:4000/api/courses";
-const ASSIGNMENTS_URL = "http://localhost:4000/api/assignments";
+
+const API_BASE = process.env.REACT_APP_API_BASE;
+const ASSIGNMENTS_URL = `${API_BASE}/assignments`;
 
 // NOTE: Copy from Modules (modules > assignments)
-
 // Retrieve Assignments for a Course
 export const findAssignmentsForCourse = async (courseId) => {
   const response = await axios
