@@ -1,12 +1,16 @@
 import {Navigate, Route, Routes} from "react-router";
 import KanbasNavigation from "./KanbasNavigation";
 import Courses from "./Courses";
-import Account from "./Account";
+// import Account from "./Account";     -- OLD ACCOUNTnp
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import store from "./store";
 import {useEffect, useState} from "react";
 import {Provider} from "react-redux";
+import SignIn from "./users/signin";      // A6 - 3.5.1
+import Account from "./users/account";    // A6 - 3.5.2
+import UserTable from "./users/table";    // A6 - 3.5.4
+import SignUp from "./users/signup";      // A6 - 3.5.9
 
 function Kanbas() {
   // A5: 4.2.1 Retrieving Courses
@@ -70,7 +74,21 @@ function Kanbas() {
           <div>
             <Routes>
               <Route path="/" element={<Navigate to="Dashboard" />} />
-              <Route path="Account" element={<Account />} />
+              {/* A6 - 3.5.1*/}
+              <Route path="/signin" element={<SignIn />} />
+
+              {/* A6 - 3.5.2*/}
+              <Route path="/account" element={<Account />} />
+
+              {/* A6 - 3.5.4*/}
+              <Route path="/admin/users" element={<UserTable />} />
+
+              {/* A6 - 3.5.8*/}
+              <Route path="account/:id" element={<Account />} />
+
+              {/* A6 - 3.5.9*/}
+              <Route path="/signup" element={<SignUp />} />
+
               <Route path="Dashboard" element={<Dashboard
                   courses = {courses}
                   course = {course}

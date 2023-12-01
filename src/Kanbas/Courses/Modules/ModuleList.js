@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import "../../index.css"
 import {GoCheckCircle} from "react-icons/go";
-import {HiPlus} from "react-icons/hi";
 import {useDispatch, useSelector} from "react-redux";
-import {addModule, deleteModule, setModule, updateModule, setModules} from "./modulesReducer";
-import { findModulesForCourse, createModule } from "./client";
+import {addModule, deleteModule, setModule, setModules, updateModule} from "./modulesReducer";
 import * as client from "./client";
+import {createModule, findModulesForCourse} from "./client";
 
 function ModuleList() {
   // Constants

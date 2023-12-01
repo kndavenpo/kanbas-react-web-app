@@ -7,7 +7,12 @@ import {useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 
 function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, updateCourse }) {
-  const cardColors = ['indianred','steelblue','seagreen', 'orange','forestgreen','darkblue']
+  const cardColors = [
+      'indianred','steelblue','seagreen', 'orange','forestgreen','darkblue', 'khaki', 'lightgray',  'salmon', 'plum',
+    'yellowgreen', 'lightskyblue', 'firebrick', 'goldenrod', 'aliceblue', 'peru', 'cornflowerblue', 'peachpuff',
+    'darkslateblue', 'indianred','steelblue','seagreen', 'orange','forestgreen','darkblue', 'khaki', 'lightgray',
+    'salmon', 'plum','aliceblue', 'peru', 'cornflowerblue', 'peachpuff','yellowgreen', 'lightskyblue', 'firebrick',
+  ]
   const dispatch = useDispatch();
 
   return (
@@ -62,7 +67,10 @@ function Dashboard ({ courses, course, setCourse, addNewCourse, deleteCourse, up
                   </div>
                   <div className="card-body">
                     <p className="card-title" style={{ color: cardColors[index] }}>{course.number}</p>
-                    <Link to={`/Kanbas/Courses/${course._id}`} className="card-text">
+                    <Link
+                        key={courses[0]._id.$oid}
+                        to={`/Kanbas/Courses/${courses[0]._id.$oid}`}
+                        className="card-text">
                       {course.number + "." + course.name}
                     </Link>
                     <br/><br/>

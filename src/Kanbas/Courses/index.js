@@ -15,7 +15,7 @@ function Courses({ courses }) {
   const [empty, kanbas, courses_, id, screen] = pathname.split("/");
   const links = ["Home", "Modules", "Assignments", "Grades"];
   const currentPage = links.find((link) => link === screen);
-  const course = courses.find((course) => course._id === courseId);
+  const course = courses.find((c) => c._id.$oid === courseId);
 
   return (
       <div>
@@ -27,7 +27,7 @@ function Courses({ courses }) {
           </div>
         </div>
         <hr className="full-width-hr" />
-        <CourseNavigation />
+        < CourseNavigation  coursesdata = {courses}/>
         <div>
           <div
               className="overflow-y-scroll position-fixed bottom-0 end-0"

@@ -3,12 +3,13 @@ import { Link, useParams, useLocation } from "react-router-dom";
 import "../../index.css"
 import db from "../../Database";
 
-function CourseNavigation() {
+function CourseNavigation({coursesdata}) {
   const { courseId } = useParams();
   const {pathname} = useLocation();
   const [empty, kanbas, courses, id, screen] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);
+  const course = coursesdata.find((c) => c._id.$oid === courseId);
   const links = ["Home", "Modules", "Assignments", "Grades"];
+  console.log(course);
 
   return (
       <div>
